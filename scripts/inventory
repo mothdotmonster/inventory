@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -z "$INVDIR" ]; then
+  invdir=~/.inventory
+else
+  invdir="$INVDIR"
+fi
+
+if [ ! -d "$invdir" ]; then
+	echo ""$invdir" does not exist, creating..."
+  mkdir "$invdir"
+fi
+
+files=(""$invdir"/*")
+filesnum=$(ls -l "$invdir" | grep -v ^t | wc -l)
+
+if [ "$filesnum" -eq 0 ]; then
+  echo "Your inventory is empty."
+else
+  echo "Your inventory contains:"
+  for i in ${files[@]}; do
+    echo "${i##*/}"
+  done
+fi

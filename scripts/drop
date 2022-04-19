@@ -1,0 +1,35 @@
+#!/bin/bash
+
+if [ -z "$INVDIR" ]; then
+  invdir=~/.inventory
+else
+  invdir="$INVDIR"
+fi
+
+if [ ! -d "$invdir" ]; then
+	echo ""$invdir" does not exist, creating..."
+  mkdir "$invdir"
+fi
+
+if [ ! -e "$invdir"/"$1" ]; then
+  echo "You can't drop something that doesn't exist!"
+else
+  if [ -e ./"$1" ]; then
+    printf "Oh no!\nThe file that you are trying to drop already exists. Please rename it or drop it somewhere else.\n"
+  else
+    mv "$invdir"/"$1" ./
+    echo "You dropped "$1"."
+  fi
+fi
+
+files=(""$invdir"/*")
+filesnum=$(ls -l "$invdir" | grep -v ^t | wc -l)
+
+if [ "$filesnum" -eq 0 ]; then
+  echo "Your inventory is empty."
+else
+  echo "Your inventory now contains:"
+  for i in ${files[@]}; do
+    echo "${i##*/}"
+  done
+fi
