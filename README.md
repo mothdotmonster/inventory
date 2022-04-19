@@ -2,7 +2,7 @@
 
 Move files like an old text adventure.
 
-***
+To install, copy the scripts to a folder that's in your $PATH.
 
 USAGE:
 
