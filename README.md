@@ -1,5 +1,7 @@
 # inventory
 
+[![asciicast](https://asciinema.org/a/wYW6IdGCYzl4O9Ybc9X7j1HXk.svg)](https://asciinema.org/a/wYW6IdGCYzl4O9Ybc9X7j1HXk)
+
 Move files like an old text adventure.
 
 To install, copy the scripts to a folder that's in your $PATH.
